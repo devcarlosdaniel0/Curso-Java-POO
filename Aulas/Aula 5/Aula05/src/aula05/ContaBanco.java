@@ -22,6 +22,7 @@ public class ContaBanco {
         System.out.println("Dono: " + this.getDono());
         System.out.println("Saldo: " + this.getSaldo());
         System.out.println("Status: " + this.getStatus());
+        System.out.println("---------------------------");
     }
     
     public void abrirConta(String tipo) {
@@ -58,23 +59,36 @@ public class ContaBanco {
     public void sacar(float saque) {
         if ((this.getStatus() == true) && (this.getSaldo() >= saque)) {
             this.setSaldo(this.getSaldo() - saque);
-            System.out.println("Saldo de R$" + saque + " realizado na conta de " + this.getDono());
+            System.out.println("Saque de R$" + saque + " realizado na conta de " + this.getDono());
         } else {
             System.out.println("Saldo insuficiente ou a conta está fechada!");
         }
     }
     
     public void pagarMensal() {
-        float taxaCC = 12;
-        float taxaCP = 20;
-        if ((this.getTipo() == "CC") && (this.getStatus() == true) && (this.getSaldo() > taxaCC)) {
-            this.setSaldo(getSaldo() - taxaCC);
-            System.out.println("Mensalidade de R$" + taxaCC + " paga no nome de " + this.getDono());
-        } else if ((this.getTipo() == "CP") && (this.getStatus() == true) && (this.getSaldo() > taxaCP)) {
-            this.setSaldo(getSaldo() - taxaCP);
-            System.out.println("Mensalidade de R$" + taxaCP + " paga no nome de " + this.getDono());
+        float taxa;
+        
+        if (this.getStatus() == true) {
+            switch (this.getTipo()) {
+                case "CC":
+                    taxa = 12;
+                    break;
+                case "CP":
+                    taxa = 20;
+                    break;
+                default:
+                    System.out.println("Erro! A conta deve ser CC ou CP");
+                    return;
+            }
+            
+            if (this.getSaldo() >= taxa) {
+                this.setSaldo(getSaldo() - taxa);
+                System.out.println("Mensalidade de R$" + taxa + " paga no nome de " + this.getDono());
+            } else {
+                System.out.println("Impossível pagar, saldo insuficiente");
+            }
         } else {
-            System.out.println("Impossível pagar a mensalidade");
+            System.out.println("Impossível pagar a mensalidade: conta inativa");
         }
     }
         
