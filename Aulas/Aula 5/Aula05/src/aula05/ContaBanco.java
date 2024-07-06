@@ -24,21 +24,15 @@ public class ContaBanco {
         System.out.println("Status: " + this.getStatus());
     }
     
-    
     public void abrirConta(String tipo) {
-        this.setTipo(tipo);
-        if (tipo == "CC") {
-            this.setSaldo(50);
-            this.setStatus(true);
-            System.out.println("Conta aberta com sucesso!");
-        } else if (tipo == "CP"){
-            this.setSaldo(150);
+        if (tipo.equals("CC") || tipo.equals("CP")) {
+            this.setTipo(tipo);
+            this.setSaldo(tipo.equals("CC") ? 50 : 150);
             this.setStatus(true);
             System.out.println("Conta aberta com sucesso!");
         } else {
             System.out.println("ERRO! A conta deve ser CC ou CP");
         }
-        
     }
     
     public void fecharConta() {
