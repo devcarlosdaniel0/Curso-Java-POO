@@ -11,11 +11,12 @@ public class Livro implements Publicacao {
     
     // Métodos
     public String detalhes() {
-        return "Livro{" + "titulo=" + titulo + ", autor=" 
-                + autor + "\n, totPag=" + totPag + ", pagAtual=" 
-                + pagAtual + ", aberto=" + aberto + "\n, leitor=" + leitor.getNome() +
-                ", idade=" + leitor.getIdade() +
-                ", sexo=" + leitor.getSexo() + '}';
+        System.out.println("-----------------------------------------------");
+        return "Livro{" + "titulo=" + titulo + " autor=" 
+                + autor + "\n totPag=" + totPag + " pagAtual=" 
+                + pagAtual + " aberto=" + aberto + "\n leitor=" + leitor.getNome() +
+                " idade=" + leitor.getIdade() +
+                " sexo=" + leitor.getSexo() + '}';
     }
     
     // Construtor
@@ -93,13 +94,13 @@ public class Livro implements Publicacao {
         if (this.getAberto() && p <= this.getTotPag()) {
             this.setPagAtual(p);
         } else {
-            System.out.println("ERRO");
+            System.out.println("ERRO!");
         }
     }
 
     @Override
     public void avancarPag(int a) {
-        if (a + this.getPagAtual() <= this.getTotPag()) {
+        if (a > 0 && (a + this.getPagAtual() <= this.getTotPag()) && this.getAberto()) {
             this.setPagAtual(getPagAtual() + a);
         } else {
             System.out.println("ERRO!");
@@ -108,7 +109,7 @@ public class Livro implements Publicacao {
 
     @Override
     public void voltarPag(int v) {
-        if (v <= this.getPagAtual()) {
+        if (v > 0 && (v <= this.getPagAtual()) && this.getAberto()) {
             this.setPagAtual(this.getPagAtual() - v);
         } else {
             System.out.println("ERRO!");
