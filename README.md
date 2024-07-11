@@ -1,4 +1,4 @@
-# Curso de Programação Orientada a Objetos com Java do - <a href="https://www.cursoemvideo.com/curso/java-poo/" target="blank_">Curso em Vídeo</a> ☕
+# Curso de Programação Orientada a Objetos em Java do - <a href="https://www.cursoemvideo.com/curso/java-poo/" target="blank_">Curso em Vídeo</a> ☕
 
 # O que aprendi
 
